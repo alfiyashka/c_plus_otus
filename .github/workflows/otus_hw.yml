@@ -14,10 +14,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
-    - run: cmake hm1/ -DPATH_VARSION=${{ github.run_number }} -DWITH_BOOST_TEST=ON
-    - run: cmake --build hm1/
-    - run: cmake --build hm1/ --target test
-    - run: cmake --build hm1/ --target package
+    - run: cmake -S hm1/ -B /hm1/build DCMAKE_BUILD_TYPE="Release" -DPATH_VARSION=${{ github.run_number }} -DWITH_BOOST_TEST=ON
+    - run: cmake --build hm1/build
+    - run: cmake --build hm1/build --target test
+    - run: cmake --build hm1/build --target package
     - name: Release
       id: cr_release
       uses: actions/create-release@v1
