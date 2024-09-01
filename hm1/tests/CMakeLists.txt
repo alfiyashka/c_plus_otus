@@ -12,3 +12,5 @@ add_executable (HW1Test_run ${HW1_UNIT_TESTS})
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 target_link_libraries(HW1Test_run ${Boost_LIBRARIES})
+
+add_test(helloworld HW1Test_run)
