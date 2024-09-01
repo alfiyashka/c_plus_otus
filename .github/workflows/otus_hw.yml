@@ -18,7 +18,7 @@ jobs:
     - run: sudo chmod 777 hm1/build
     - run: cmake ${{github.workspace}}/hm1 -DCMAKE_BUILD_TYPE="Release" -DPATH_VARSION=${{ github.run_number }} -DWITH_BOOST_TEST=ON
     - run: cmake --build .
-    - run: cmake --build . --target test
+    - run: cmake --build . --target tests
     - run: cmake --build . --target package
     - name: Release
       id: cr_release
