@@ -13,11 +13,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
+    - run: cmake hm1/ -DPATH_VARSION=${{ github.run_number }} -DWITH_BOOST_TEST=ON
+    - run: cmake --build hm1/
+    - run: cmake --build hm1/ --target test
+    - run: cmake --build hm1/ --target package
+    - name: Release
+      id: cr_release
+      uses: actions/create-release@v1
+      env: 
+        GITHUB_TOKEN: $ {{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.run_number }}
+        release_number: Release  ${{ github.run_number }}
+        draft: false
+        prerelease: false
