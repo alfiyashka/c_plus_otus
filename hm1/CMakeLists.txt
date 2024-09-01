@@ -1,10 +1,21 @@
 cmake_minimum_required(VERSION 3.28.3)
 
-project(homework1 VERSION 1.0.0 LANGUAGES C CXX)
+set(PATCH_VERSION "1" CACHE INTERNAL "PATCH_VERSION" )
+set(PROJECT_VERSION 0.0.${PATCH_VERSION})
 
-include(GoogleTest)
-enable_testing()
 
-add_executable(homework1 main.cpp)
+project(HW1 VERSION ${PROJECT_VERSION} LANGUAGES C CXX)
 
-set_property(TARGET homework1 PROPERTY CXX_STANDARD 17)
+configure_file(version.h.in version.h)
+
+include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
+
+add_executable(HW1 main.cpp)
+
+set_property(TARGET HW1 PROPERTY CXX_STANDARD 17)
+
+option(WITH_BOOST_TEST "Enable using BOOST_TEST" ON)
+
+if (WITH_BOOST_TEST)
+    add_subdirectory(tests)
+endif()
