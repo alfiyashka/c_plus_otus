@@ -16,8 +16,7 @@ jobs:
     - run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
     - run: sudo mkdir hm1/build
     - run: sudo chmod 777 hm1/build
-    - run: cmake -S hm1/ -B hm1/build -DCMAKE_BUILD_TYPE="Release" -DPATH_VARSION=${{ github.run_number }} -DWITH_BOOST_TEST=ON
-    - run: cd hm1/
+    - run: cmake ${{github.workspace}}/hm1 -DCMAKE_BUILD_TYPE="Release" -DPATH_VARSION=${{ github.run_number }} -DWITH_BOOST_TEST=ON
     - run: cmake --build .
     - run: cmake --build . --target test
     - run: cmake --build . --target package
