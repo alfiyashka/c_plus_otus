@@ -24,7 +24,7 @@ jobs:
       id: cr_release
       uses: actions/create-release@v1
       env: 
-        GITHUB_TOKEN: $ {{ secrets.SECRET_TOKEN }}
+        GITHUB_TOKEN: $ {{ secrets.GUTHUB_TOKEN }}
       with:
         tag_name: ${{ github.run_number }}
         release_number: Release  ${{ github.run_number }}
