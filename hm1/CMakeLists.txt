@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.28.3)
 
+
+
 set(PATCH_VERSION "1" CACHE INTERNAL "PATCH_VERSION" )
 set(PROJECT_VERSION 0.0.${PATCH_VERSION})
 
@@ -22,5 +24,6 @@ if (WITH_BOOST_TEST)
 
 endif()
 
-include(CPack)
+include("functions.cmake")
+generate_packages(${PROJECT_NAME})
 
