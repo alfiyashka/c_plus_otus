@@ -16,7 +16,9 @@ BOOST_AUTO_TEST_SUITE( check_version_test )
     BOOST_AUTO_TEST_CASE( version_test2 )
     {
         const std::string version(OTUS_HW1_VERSION);
-        BOOST_CHECK(std::strcmp(version.c_str(), "0.0.1") != 0);
+        
+        BOOST_CHECK_MESSAGE(std::strcmp(version.c_str(), "0.0.1") != 0,
+           "version error: current version is " + version);
     }
 BOOST_AUTO_TEST_SUITE_END()
 
