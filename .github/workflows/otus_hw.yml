@@ -20,11 +20,11 @@ jobs:
     - run: ctest
     - run: cmake --build . --target package
     
-    - name: Release
-      id: cr_release
+    - name: Create Release
+      id: create_release
       uses: actions/create-release@v4
-      env: 
-        GITHUB_TOKEN: $ {{ secrets.GUTHUB_TOKEN }}
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.run_number }}
         release_number: Release  ${{ github.run_number }}
