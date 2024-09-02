@@ -10,7 +10,7 @@ BOOST_AUTO_TEST_SUITE( check_version_test )
     {
         const std::string version(OTUS_HW1_VERSION);
         std::cout<<"Version " <<version.c_str() << std::endl;
-        BOOST_CHECK(version.empty() );
+        BOOST_CHECK_MESSAGE(!version.empty() , "version is empty! ");
     }
 
     BOOST_AUTO_TEST_CASE( version_test2 )
