@@ -1,4 +1,5 @@
 function(generate_packages NAME)
+    set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
     set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
     set(CPACK_DEBIAN_PACKAGE_DEPENDS "libpurple0 (>= ${PURPLE_VERSION})") # TODO: libglib2.0-0 could be added here, but it is non-trivial to do. libpurple0 depends on it anyway, so we should be good.
     if (${OPUSFILE_FOUND})
