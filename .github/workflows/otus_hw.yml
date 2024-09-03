@@ -32,7 +32,7 @@ jobs:
         prerelease: false
     - name: Upload build
       uses: actions/upload-artifact@v4 
-        with:
+      with:
         name: homework1
         path: /home/runner/work/c_plus_otus/c_plus_otus
       
