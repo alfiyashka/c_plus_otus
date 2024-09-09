@@ -21,7 +21,9 @@ jobs:
     - run: cmake ${{github.workspace}}/hm2 -DCMAKE_BUILD_TYPE="Release" -DPATCH_VERSION=${{ github.run_number }} 
     - run: cmake --build .
     - run: cmake --build . --target package
-    
+    - run: cd /home/runner/work/c_plus_otus/c_plus_otus
+    - run: ./hw2
+    - run: md5sum sortedIps.txt 
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
