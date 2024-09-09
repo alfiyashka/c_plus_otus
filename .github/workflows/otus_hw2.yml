@@ -28,13 +28,14 @@ jobs:
       shell: bash
       run: |
           #bash
-          echo "RESULT_VAR = $( md5sum sortedIps.txt  | cut -d ' ' -f 1 )"
+          res = $( md5sum sortedIps.txt  | cut -d ' ' -f 1 )"
           test="24e7a7b2270daee89c64d3ca5fb3da1a"
-          if test [ $RESULT_VAR = $test ]; then
+          if test [ $res = $test ]; then
               echo "result equals to expected"
           else 
               echo " incorrect result !" 
-          fi 
+          fi
+          echo " program result is $res"
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
