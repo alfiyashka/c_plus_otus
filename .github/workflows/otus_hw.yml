@@ -3,8 +3,10 @@ name: otus_hw
 on:
   push:
     branches: [ "main" ]
+    paths: 'hm1/**'
   pull_request:
     branches: [ "main" ]
+    paths: 'hm1/**'
 
 jobs:
   build:
