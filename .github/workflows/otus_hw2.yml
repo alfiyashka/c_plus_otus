@@ -31,11 +31,12 @@ jobs:
           result="$( md5sum sortedIps.txt  | cut -d ' ' -f 1 )"
           echo " program result is $result"
           test="24e7a7b2270daee89c64d3ca5fb3da1a"
-          if test [ ${res} = ${test} ]; then
+          if test [[ "$result" == "$test" ]] then
               echo "result equals to expected"
           else 
               echo " incorrect result !" 
-          fi          
+          fi
+          
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
