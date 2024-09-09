@@ -23,30 +23,18 @@ jobs:
     - run: cmake --build . --target package
     - run: cd /home/runner/work/c_plus_otus/c_plus_otus
     - run: ./hw2
-    - name: set result into github variable
-      id: set_result
-      shell: bash
-      run: |
-          #bash
-          echo "RESULT_PR = $( md5sum sortedIps.txt  | cut -d ' ' -f 1 )"  >> $GITHUB_ENV
-    - name: print result into github variable
-      id: print_result
-      shell: bash
-      run: |
-          #bash
-          echo "${{ env.RESULT_PR }}" 
-    - name : test result
-      shell : bash
+    - name: test
       id: test_result
+      shell: bash
       run: |
-        #bash
-        test="24e7a7b2270daee89c64d3ca5fb3da1a"
-        result=${{ env.RESULT_PR }}
-        if test [ $result = $test ]; then
-          echo "result equals to expected"
-        else 
-          echo " incorrect result !" 
-        fi 
+          #bash
+          echo "RESULT_VAR = $( md5sum sortedIps.txt  | cut -d ' ' -f 1 )"
+          test="24e7a7b2270daee89c64d3ca5fb3da1a"
+          if test [ $RESULT_VAR = $test ]; then
+              echo "result equals to expected"
+          else 
+              echo " incorrect result !" 
+          fi 
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
