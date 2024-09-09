@@ -24,9 +24,9 @@ jobs:
     - run: cd /home/runner/work/c_plus_otus/c_plus_otus
     - run: ./hw2
     - run: |
-          echo "programRes = $( md5sum sortedIps.txt )"  >> $GITHUB_ENV
+          echo "RESULT_PR = $( md5sum sortedIps.txt )"  >> $GITHUB_ENV
     - run: |
-        echo "${{ env.programRes }}"
+        echo "${{ env.RESULT_PR }}"
     - run:  |
         if test [ ${{ env.programRes }} = "24e7a7b2270daee89c64d3ca5fb3da1a"] ; then echo " result equals to expected" else " incorrect result !" fi 
     - name: Create Release
