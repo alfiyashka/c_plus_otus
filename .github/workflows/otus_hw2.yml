@@ -28,9 +28,9 @@ jobs:
       shell: bash
       run: |
           #!/bin/bash
-          myresult="$( md5sum sortedIps.txt  | cut -d ' ' -f 1 )"
+          myresult = "$( md5sum sortedIps.txt  | cut -d ' ' -f 1 )"
           echo " program result is $myresult"
-          mytest="24e7a7b2270daee89c64d3ca5fb3da1a"
+          mytest = "24e7a7b2270daee89c64d3ca5fb3da1a"
           echo " program will test with $mytest"
           if test [ "$myresult" == "$mytest" ] ; then
               echo "result equals to expected"
@@ -44,7 +44,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ SECRETS.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.run_number }}
+        tag_name: hw2_${{ github.run_number }}
         release_number: Release  ${{ github.run_number }}
         draft: false
         prerelease: false
