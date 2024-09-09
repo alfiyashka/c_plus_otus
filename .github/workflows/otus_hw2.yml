@@ -24,7 +24,7 @@ jobs:
     - run: cd /home/runner/work/c_plus_otus/c_plus_otus
     - run: ./hw2
     - run: |
-          echo "programRes = $( md5sum sortedIps.txt )"
+          echo "programRes = $( md5sum sortedIps.txt )"  >> $GITHUB_ENV
     - run: |
         echo "${{ env.programRes }}"
     - run:  |
