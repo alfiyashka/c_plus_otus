@@ -28,7 +28,7 @@ jobs:
           echo "RESULT_PR = $( md5sum sortedIps.txt )"  >> $GITHUB_ENV
     - name : test result
       run: |
-        if test ${{ env.RESULT_PR }} = "24e7a7b2270daee89c64d3ca5fb3da1a" then echo "result equals to expected" else " incorrect result !" fi 
+        if test "${{ env.RESULT_PR }}" = "24e7a7b2270daee89c64d3ca5fb3da1a" then echo "result equals to expected" else echo " incorrect result !" fi 
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
