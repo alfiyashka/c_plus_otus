@@ -29,7 +29,7 @@ jobs:
       run: |
           #bash
           result="$( md5sum sortedIps.txt  | cut -d ' ' -f 1 )"
-          echo " program result is ${res}"
+          echo " program result is $result"
           test="24e7a7b2270daee89c64d3ca5fb3da1a"
           if test [ ${res} = ${test} ]; then
               echo "result equals to expected"
