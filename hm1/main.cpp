@@ -2,7 +2,6 @@
 #include <version.h>
 
 using namespace std;
-
 int main()
 {
     std::cout<<"Build " << OTUS_HW1_VERSION << std::endl;
