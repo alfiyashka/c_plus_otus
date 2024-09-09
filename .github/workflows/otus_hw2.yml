@@ -28,11 +28,11 @@ jobs:
       shell: bash
       run: |
           #!/bin/bash
-          result="$( md5sum sortedIps.txt  | cut -d ' ' -f 1 )"
-          echo " program result is $result"
-          test="24e7a7b2270daee89c64d3ca5fb3da1a"
-          echo " program will test with $test"
-          if test [[ "$result" == "$test" ]]; then
+          myresult="$( md5sum sortedIps.txt  | cut -d ' ' -f 1 )"
+          echo " program result is $myresult"
+          mytest="24e7a7b2270daee89c64d3ca5fb3da1a"
+          echo " program will test with $mytest"
+          if test [[ "$myresult" == "$mytest" ]]; then
               echo "result equals to expected"
           else 
               echo " incorrect result !" 
