@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
-    - run: cmake ${{github.workspace}}/hm1 -DCMAKE_BUILD_TYPE="Release" -DPATCH_VERSION=${{ github.run_number }} -DWITH_BOOST_TEST=ON
+    - run: cmake ${{github.workspace}}/hm2 -DCMAKE_BUILD_TYPE="Release" -DPATCH_VERSION=${{ github.run_number }} 
     - run: cmake --build .
     - run: cmake --build . --target package
     
