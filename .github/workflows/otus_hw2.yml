@@ -24,10 +24,19 @@ jobs:
     - run: cd /home/runner/work/c_plus_otus/c_plus_otus
     - run: ./hw2
     - name: set result into github variable
+      shell: bash
       run: |
+          #bash
           echo "RESULT_PR = $( md5sum sortedIps.txt )"  >> $GITHUB_ENV
-    - name : test result
+    - name: print result into github variable
+      shell: bash
       run: |
+          #bash
+          echo "${{ env.RESULT_PR }}" 
+    - name : test result
+      shell : bash
+      run: |
+        #bash
         if test "${{ env.RESULT_PR }}" = "24e7a7b2270daee89c64d3ca5fb3da1a" then echo "result equals to expected" else echo " incorrect result !" fi 
     - name: Create Release
       id: create_release
