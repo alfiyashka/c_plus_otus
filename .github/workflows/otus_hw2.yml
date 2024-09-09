@@ -28,7 +28,7 @@ jobs:
       shell: bash
       run: |
           #bash
-          res = $( md5sum sortedIps.txt  | cut -d ' ' -f 1 )"
+          res = $( md5sum sortedIps.txt  | cut -d ' ' -f 1 )
           echo " program result is ${res}"
           test="24e7a7b2270daee89c64d3ca5fb3da1a"
           if test [ ${res} = ${test} ]; then
