@@ -1,0 +1,39 @@
+name: otus_hw2
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+     - 'hm2/**'
+  pull_request:
+    branches: [ "main" ]
+    paths: 
+     - 'hm2/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
+    - run: cmake ${{github.workspace}}/hm1 -DCMAKE_BUILD_TYPE="Release" -DPATCH_VERSION=${{ github.run_number }} -DWITH_BOOST_TEST=ON
+    - run: cmake --build .
+    - run: cmake --build . --target package
+    
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+          GITHUB_TOKEN: ${{ SECRETS.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.run_number }}
+        release_number: Release  ${{ github.run_number }}
+        draft: false
+        prerelease: false
+    - name: Upload build
+      uses: actions/upload-artifact@v4 
+      with:
+        name: homework2
+        path: /home/runner/work/c_plus_otus/c_plus_otus
