@@ -27,7 +27,7 @@ jobs:
       shell: bash
       run: |
           #bash
-          echo "RESULT_PR = ($( md5sum sortedIps.txt ))"  >> $GITHUB_ENV
+          echo "RESULT_PR = $( md5sum sortedIps.txt  | cut -d ' ' -f 1 )"  >> $GITHUB_ENV
     - name: print result into github variable
       shell: bash
       run: |
