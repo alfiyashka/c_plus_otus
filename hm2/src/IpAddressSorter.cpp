@@ -107,13 +107,15 @@ void IPAdressSorter::printIntoFile() const
     }
     std::ofstream resFile;
     resFile.open(RESULT_FILE_NAME);
+    int part1 = 0, part2 = 0, part3 = 0, part4 = 0;
     
     for (auto ipAddr : m_ipAddrSet)
     {
-        resFile << std::get<0>(ipAddr) << "."
-            << std::get<1>(ipAddr) << "."
-            << std::get<2>(ipAddr) << "."
-            << std::get<3>(ipAddr) << "\n";
+        std::tie(part1, part2, part3, part4) = ipAddr;
+        resFile << part1 << "."
+            << part2 << "."
+            << part3 << "."
+            << part4 << "\n";
     }
     resFile.close();
 }
@@ -122,29 +124,31 @@ void IPAdressSorter::printIntoFile() const
 
 auto IPAdressSorter::checkFilterCondition(const ipAddress& filter, const ipAddress& element) const
 {
-    if (std::get<0>(filter) > 0 
-        && std::get<1>(filter) == 0
-        && std::get<2>(filter) == 0
-        && std::get<3>(filter) == 0)
+    int part1 = 0, part2 = 0, part3 = 0, part4 = 0;
+    std::tie(part1, part2, part3, part4) = filter;
+    if (part1 > 0 
+        && part2 == 0
+        && part3 == 0
+        && part4 == 0)
     {
-        return std::get<0>(filter) == std::get<0>(element);
+        return part1 == std::get<0>(element);
     }
-    else if (std::get<0>(filter) > 0 
-        && std::get<1>(filter) > 0
-        && std::get<2>(filter) == 0
-        && std::get<3>(filter) == 0)
+    else if (part1 > 0 
+        && part2 > 0
+        && part3 == 0
+        && part4 == 0)
     {
-        return std::get<0>(filter) == std::get<0>(element)
-            && std::get<1>(filter) == std::get<1>(element);
+        return part1 == std::get<0>(element)
+            && part2 == std::get<1>(element);
     }
-    else if (std::get<0>(filter) > 0 
-        && std::get<1>(filter) > 0
-        && std::get<2>(filter) > 0
-        && std::get<3>(filter) == 0)
+    else if (part1 > 0 
+        && part2 > 0
+        && part3 > 0
+        && part4 == 0)
     {
-        return std::get<0>(filter) == std::get<0>(element)
-            && std::get<1>(filter) == std::get<1>(element)
-            && std::get<2>(filter) == std::get<2>(element);
+        return part1 == std::get<0>(element)
+            && part2 == std::get<1>(element)
+            && part3 == std::get<2>(element);
     }
     else
     {
@@ -172,10 +176,12 @@ void IPAdressSorter::filterAndPrintIntoFile(const ipAddress& findIP) const
     {
         if (IPAdressSorter::checkFilterCondition(findIP, *ipAddr))
         {
-            resFile << std::get<0>(*ipAddr) << "."
-                 << std::get<1>(*ipAddr) << "."
-                 << std::get<2>(*ipAddr) << "."
-                 << std::get<3>(*ipAddr) << "\n";           
+            int part1 = 0, part2 = 0, part3 = 0, part4 = 0;
+            std::tie(part1, part2, part3, part4) = *ipAddr;
+            resFile << part1 << "."
+                 << part2 << "."
+                 << part3 << "."
+                 << part4 << "\n";
         }
 
     }
@@ -185,18 +191,20 @@ void IPAdressSorter::filterAndPrintIntoFile(const ipAddress& findIP) const
 void IPAdressSorter::filterAnyAndPrintIntoFile(const int value) const
 {
     std::ofstream resFile;
-    resFile.open(RESULT_FILE_NAME, std::ios_base::app);    
+    resFile.open(RESULT_FILE_NAME, std::ios_base::app);
     for (auto ipAddr : m_ipAddrSet)
     {
-        if (std::get<0>(ipAddr) == value
-            || std::get<1>(ipAddr) == value
-            || std::get<2>(ipAddr) == value
-            || std::get<3>(ipAddr) == value)
+        int part1 = 0, part2 = 0, part3 = 0, part4 = 0;
+        std::tie(part1, part2, part3, part4) = ipAddr;
+        if (part1 == value
+            || part2 == value
+            || part3 == value
+            || part4 == value)
         {
-            resFile << std::get<0>(ipAddr) << "."
-                 << std::get<1>(ipAddr) << "."
-                 << std::get<2>(ipAddr) << "."
-                 << std::get<3>(ipAddr) << "\n";           
+            resFile << part1 << "."
+                 << part2 << "."
+                 << part3 << "."
+                 << part4 << "\n";
         }
 
     }
