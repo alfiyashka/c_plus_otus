@@ -33,8 +33,9 @@ jobs:
         release_number: Release  ${{ github.run_number }}
         draft: false
         prerelease: false
+        path: ${{github.workspace}}/hm3
     - name: Upload build
       uses: actions/upload-artifact@v4 
       with:
         name: homework3
-        path: /home/runner/work/c_plus_otus/c_plus_otus/hm3
+        path: /home/runner/work/c_plus_otus/c_plus_otus/
