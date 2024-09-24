@@ -33,7 +33,6 @@ jobs:
         release_number: Release  ${{ github.run_number }}
         draft: false
         prerelease: false
-        path: ${{github.workspace}}/hm3
     - name: Upload build
       uses: actions/upload-artifact@v4 
       with:
