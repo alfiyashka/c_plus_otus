@@ -12,7 +12,6 @@ int factorial (const int number)
      return number * factorial(number - 1);
 }
 
-
 int main()
 {
   const int elementsCount = 10;
