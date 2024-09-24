@@ -2,6 +2,7 @@
 #include <map>
 #include "src/CustomAllocator.hpp"
 #include "src/CustomMap.hpp"
+using namespace std;
 
 int factorial (const int number)
 {
@@ -10,8 +11,6 @@ int factorial (const int number)
      }
      return number * factorial(number - 1);
 }
-
-using namespace std;
 
 int main()
 {
