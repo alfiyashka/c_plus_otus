@@ -40,7 +40,7 @@ jobs:
         run: sudo apt install graphviz
         
       - name: pwd
-        run: pwd  
+        run: ls -l  
         
       - name: Create documentation     
         run: doxygen /tree/main/hm4/Doxyfile
