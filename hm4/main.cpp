@@ -49,12 +49,16 @@ constexpr bool all_same(const std::tuple<Head,Tail...>&){
 }
 
 
+/**
+* /brief used to print ip address
+*
+*/
 namespace printer
 {
 
   /**
   * /brief common function to print value if it's type is not container 
-  *
+  * @param t - input object that stores ip address
   */
   template <typename T, typename enable_if<!check_type::is_container<T>::value>::type* = nullptr>
   void print_ip(T t)
@@ -64,10 +68,10 @@ namespace printer
 
   /**
   * /brief prints container values
-  *
+  * @param cont - input object that stores ip address, if object is container
   */
   template <typename T, typename enable_if<check_type::is_container<T>::value>::type* = nullptr>
-  void print_ip(T cont)
+  void print_ip(const T& cont)
   {
     std::string separator;
     for(auto item : cont)
@@ -81,7 +85,7 @@ namespace printer
 
   /**
   * /brief print int8_t value as ip
-  *
+  * @param t - input object that stores ip address
   */
   template <>
   void print_ip(const int8_t t)
@@ -92,7 +96,7 @@ namespace printer
 
  /**
   * /brief print int16_t value as ip
-  *
+  * @param t - input object that stores ip address
   */
   template <>
   void print_ip<>(const int16_t t)
@@ -104,7 +108,7 @@ namespace printer
 
  /**
   * /brief print int32_t value as ip
-  *
+  * @param t - input object that stores ip address
   */
   template <>
   void print_ip(const int32_t t)
@@ -122,7 +126,7 @@ namespace printer
 
  /**
   * /brief print int64_t value as ip
-  *
+  * @param t - input object that stores ip address
   */
   template <>
   void print_ip(const int64_t t)
@@ -148,7 +152,8 @@ namespace printer
 
  /**
   * /brief prints tuple ip (index of tuple calculates on compile time)
-  *
+  * @param _tup - tuple
+  * @param I - index number
   */
   template<class TupType, size_t... I>
   void printTuple(const TupType& _tup, std::index_sequence<I...>)
@@ -159,7 +164,7 @@ namespace printer
 
  /**
   * /brief checks that tuple has elements with same type and prints tuple ip 
-  *
+  * @param t - tuple
   */
   template <typename ... ARGS>
   void print_ip(const std::tuple<ARGS...> t)
