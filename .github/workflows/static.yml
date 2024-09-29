@@ -60,6 +60,7 @@ jobs:
         run: cd ./hm4 && doxygen Doxyfile
       - run: ls -ld $(find .)  
       - run: mkdir html
+      - run: chmod 777 -R html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
