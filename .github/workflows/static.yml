@@ -37,8 +37,8 @@ jobs:
       - name: Install Doxygen
         run: sudo apt install doxygen && doxygen --version
 
-      - name: Install Graphviz
-        run: sudo apt install graphviz
+     # - name: Install Graphviz
+      #  run: sudo apt install graphviz
 
     #  - name: Ensure docs/html directory exists
    #     run: mkdir -p docs/html
