@@ -39,11 +39,19 @@ jobs:
       - name: Install Graphviz
         run: sudo apt install graphviz
         
+      - uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          folder: docs/html
+          config_file: Doxyfile
+          doxygen_version: 1.9.6
+        
      #
     #  - run: cd ./hm4
-      - name: Create documentation     
-        run: cd ./hm4 && doxygen Doxyfile
-      - run: ls -ld $(find .)  
+   #   - name: Create documentation     
+   #     run: cd ./hm4 && doxygen Doxyfile
+   #   - run: ls -ld $(find .)  
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
