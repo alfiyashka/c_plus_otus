@@ -42,7 +42,7 @@ jobs:
       - run: ls -ld $(find .) 
         
       - name: Create documentation     
-        run: doxygen /tree/main/hm4/Doxyfile
+        run: doxygen ./hm4/Doxyfile
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
