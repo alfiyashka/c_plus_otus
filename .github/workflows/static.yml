@@ -33,36 +33,36 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-     # - name: Setup Pages
-     #   uses: actions/configure-pages@v5
-     #- name: Install Doxygen
-     #   run: sudo apt install doxygen && doxygen --version
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Install Doxygen
+        run: sudo apt install doxygen && doxygen --version
 
-     # - name: Install Graphviz
-     #   run: sudo apt install graphviz
+      - name: Install Graphviz
+        run: sudo apt install graphviz
 
-      - name: Ensure docs/html directory exists
-        run: mkdir -p docs/html
-      - name: Generate and deploy Doxygen docs
-        uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          folder: docs/html
-          config_file: Doxyfile
-          doxygen_version: 1.9.8
+    #  - name: Ensure docs/html directory exists
+   #     run: mkdir -p docs/html
+   #   - name: Generate and deploy Doxygen docs
+    #    uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
+   #     with:
+    #      github_token: ${{ secrets.GITHUB_TOKEN }}
+   #       branch: gh-pages
+   #       folder: docs/html
+   #       config_file: Doxyfile
+   #       doxygen_version: 1.9.8
        #   folder:  docs/html
         
      #
     #  - run: cd ./hm4
-   #   - name: Create documentation     
-   #     run: cd ./hm4 && doxygen Doxyfile
-   #   - run: ls -ld $(find .)  
-   #   - name: Upload artifact
-   #     uses: actions/upload-pages-artifact@v3
-    #    with:
+      - name: Create documentation     
+        run: cd ./hm4 && doxygen Doxyfile
+      - run: ls -ld $(find .)  
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
           # Upload entire repository
-   #       path: '.'
-   #   - name: Deploy to GitHub Pages
-   #     id: deployment
-   #     uses: actions/deploy-pages@v4
+          path: 'build/docs/html'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
