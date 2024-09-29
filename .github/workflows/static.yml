@@ -39,14 +39,11 @@ jobs:
       - name: Install Graphviz
         run: sudo apt install graphviz
         
-      - name: ls location
-        run: ls /hm4
-
       - name: pwd
         run: pwd  
         
       - name: Create documentation     
-        run: doxygen Doxyfile
+        run: doxygen /tree/main/hm4/Doxyfile
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
