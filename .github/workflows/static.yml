@@ -39,11 +39,8 @@ jobs:
       - name: Install Graphviz
         run: sudo apt install graphviz
         
-      - name: cd Doxyfile location
-        run: cd hm4
-
       - name: ls location
-        run: cd hm4
+        run: ls /hm4
 
       - name: pwd
         run: pwd  
