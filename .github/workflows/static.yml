@@ -60,14 +60,10 @@ jobs:
         run: cd ./hm4 && doxygen Doxyfile
       - run: ls -ld $(find .)  
       - name: Upload artifact
-        env:
-          GITHUB_TOKEN: ${{ SECRETS.GITHUB_TOKEN }}
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: '.'
+          path: './html/'
       - name: Deploy to GitHub Pages
-        env:
-          GITHUB_TOKEN: ${{ SECRETS.GITHUB_TOKEN }}
         id: deployment
         uses: actions/deploy-pages@v4
