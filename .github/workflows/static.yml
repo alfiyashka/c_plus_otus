@@ -38,6 +38,11 @@ jobs:
 
       - name: Install Graphviz
         run: sudo apt install graphviz
+      - name: pwd
+        run: pwd   
+        
+      - name: ls
+        run: ls   
         
       - name: Create documentation     
         run: doxygen /hm4/Doxyfile
