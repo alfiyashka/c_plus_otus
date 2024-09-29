@@ -40,7 +40,6 @@ jobs:
         run: sudo apt install graphviz
         
      # - run: ls -ld $(find .) 
-      - run: cd ./hm4 
       - name: Create documentation     
         run: doxygen Doxyfile
         
