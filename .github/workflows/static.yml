@@ -43,7 +43,10 @@ jobs:
         run: cd hm4
 
       - name: ls location
-        run: ls
+        run: cd hm4
+
+      - name: pwd
+        run: pwd  
         
       - name: Create documentation     
         run: doxygen Doxyfile
