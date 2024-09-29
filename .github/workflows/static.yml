@@ -43,9 +43,12 @@ jobs:
 
       - name: Ensure docs/html directory exists
         run: mkdir -p docs/html
-      - uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
+      - name: Generate and deploy Doxygen docs
+        uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: docs/html
           config_file: Doxyfile
           doxygen_version: 1.9.8
        #   folder:  docs/html
@@ -55,11 +58,11 @@ jobs:
    #   - name: Create documentation     
    #     run: cd ./hm4 && doxygen Doxyfile
    #   - run: ls -ld $(find .)  
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
+   #   - name: Upload artifact
+   #     uses: actions/upload-pages-artifact@v3
+    #    with:
           # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+   #       path: '.'
+   #   - name: Deploy to GitHub Pages
+   #     id: deployment
+   #     uses: actions/deploy-pages@v4
