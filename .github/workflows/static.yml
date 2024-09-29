@@ -59,6 +59,7 @@ jobs:
       - name: Create documentation     
         run: cd ./hm4 && doxygen Doxyfile
       - run: ls -ld $(find .)  
+      - run: mkdir html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
