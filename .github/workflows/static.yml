@@ -41,6 +41,9 @@ jobs:
         
       - name: cd Doxyfile location
         run: cd hm4
+
+      - name: ls location
+        run: ls
         
       - name: Create documentation     
         run: doxygen Doxyfile
