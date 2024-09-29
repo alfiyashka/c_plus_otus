@@ -55,7 +55,7 @@ jobs:
      #
     #  - run: cd ./hm4
       - name: Create documentation     
-        run: cd ./hm4 && doxygen Doxyfile
+        run:  doxygen 
       - run: ls -ld $(find .)  
       - run: mkdir html
       - run: chmod 777 -R html
