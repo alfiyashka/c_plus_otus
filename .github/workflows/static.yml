@@ -57,13 +57,13 @@ jobs:
       - name: Create documentation     
         run:  doxygen 
       - run: ls -ld $(find .)  
-      - run: mkdir html
-      - run: chmod 777 -R html
+   #   - run: mkdir html
+   #   - run: chmod 777 -R html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: './html/'
+          # Upload entire repository./html/
+          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
